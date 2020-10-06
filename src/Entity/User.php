@@ -28,16 +28,20 @@ class User implements UserInterface
      */
     private $roles = [];
 
-    /**
-     * 
-     */
-    private $plainPassword;
+    
 
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
      */
     private $password;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $sistemaParceiro;
+
+    
 
     public function getId(): ?int
     {
@@ -95,15 +99,7 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getPlainPassword()
-    {
-        return $this->plainPassword;
-    }
-
-    public function setPlainPassword($password)
-    {
-        $this->plainPassword = $password;
-    }
+    
 
     /**
      * @see UserInterface
@@ -121,4 +117,17 @@ class User implements UserInterface
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
     }
+
+    public function getSistemaParceiro(): ?string
+    {
+        return $this->sistemaParceiro;
+    }
+
+    public function setSistemaParceiro(?string $sistemaParceiro): self
+    {
+        $this->sistemaParceiro = $sistemaParceiro;
+
+        return $this;
+    }
+
 }
